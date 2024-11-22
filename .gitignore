@@ -1,0 +1,5 @@
+*.vtu
+results/
+*.log
+.venv/
+.vscode/
