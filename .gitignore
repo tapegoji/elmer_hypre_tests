@@ -3,3 +3,4 @@ results/
 *.log
 .venv/
 .vscode/
+*results*

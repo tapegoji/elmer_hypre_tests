@@ -3,7 +3,7 @@ Header
   CHECK KEYWORDS Warn
   Mesh DB "wire" "."
   Include Path ""
-  Results Directory "results"
+  Results Directory "results_hypre"
 End
 
 
@@ -104,9 +104,16 @@ Solver 1
   Block 22: Linear system Solver = Iterative
   Block 22: Linear System Preconditioning = AMS
   Block 22: Linear System Use Hypre = True
-  Block 22: Linear System Iterative Method = BiCGStab
+  Block 22: Linear System Iterative Method = pcg
 ! Block 22: Linear System Use Backward Error Estimate = Logical True
-
+  Block 22: AMS Cycle Type = Integer 0 ! Kaboom! 
+  Block 22: AMS Relax Type = Integer 2
+  Block 22: AMS Relax Times = Integer 1
+  Block 22: AMS Relax Weight = Real 1.0
+  Block 22: AMS Relax Omega = Real 1.0
+  Block 22: AMS Alpha Threshold = Real 0.30
+  Block 22: AMS Beta Threshold = Real 0.25
+  Block 22: AMS Singular Matrix = Logical True
   Steady State Convergence Tolerance = 1e-6
 
 End

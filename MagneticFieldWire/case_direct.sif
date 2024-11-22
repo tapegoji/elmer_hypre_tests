@@ -1,9 +1,9 @@
 ! A test that uses the direct solver for Transient simulation. It uses MUMPS, there for you can run in parallel
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "." "."
+  Mesh DB "wire" "."
   Include Path ""
-  Results Directory "results"
+  Results Directory "results_direct"
 End
 
 
@@ -73,17 +73,6 @@ Solver 1
   Nonlinear System Relaxation Factor = 1
   Linear System Solver = Direct 
   use tree gauge = logical True
-
-  Linear System Iterative Method = BiCGStabl
-  Linear System Max Iterations = 500
-  Linear System Convergence Tolerance = 1.0e-10
-  BiCGstabl polynomial degree = 4
-  Linear System Preconditioning = none
-  Linear System ILUT Tolerance = 1.0e-3
-  Linear System Abort Not Converged = False
-  Linear System Residual Output = 10
-  Linear System Precondition Recompute = 1
-  Fix Input Current Density = True
 End
 
 Solver 2
