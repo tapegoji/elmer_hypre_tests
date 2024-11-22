@@ -30,6 +30,8 @@ Simulation
   Coordinate Scaling = 1.0e-3
   Solver Input File = case.sif
   Post File = case.vtu
+
+  ! Mesh Levels = 3
   
 End
 
@@ -64,9 +66,12 @@ Solver 1
   Procedure = "MagnetoDynamics" "WhitneyAVSolver"
   Exec Solver = Always
   
+  Steady State Convergence Tolerance = 1e-6
   Nonlinear System Convergence Tolerance = 1e-6
   Nonlinear System Max Iterations = 1
+  NonLinear System Consistent Norm = True
   Newton-Raphson Iteration = Logical True
+  Edge Basis = Logical True
 
 ! These choose the overall block strategies
 !-----------------------------------------
@@ -100,12 +105,24 @@ Solver 1
   Block 11: Linear System Use Hypre = True
   Block 11: Linear System Iterative Method = BiCGStab
 ! Block 11: Linear System Use Backward Error Estimate = Logical True
-
+  
   Block 22: Linear system Solver = Iterative
   Block 22: Linear System Preconditioning = AMS
   Block 22: Linear System Use Hypre = True
   Block 22: Linear System Iterative Method = pcg
+  ! Unique numbering is 100*solver + preconditioner
+  ! AMS          2 
+  ! PCG          6 
+  ! BiCGStab     7 
+  ! GMRes        8 
+  ! FlexGMRes    9 
+  ! LGMRes       10
+  ! COGMRes      11
+
+  !  Linear System Method Hypre Index = Integer 6
+  !  Linear System Iterative Method = "pcg"
 ! Block 22: Linear System Use Backward Error Estimate = Logical True
+  
   Block 22: AMS Cycle Type = Integer 0 ! Kaboom! 
   Block 22: AMS Relax Type = Integer 2
   Block 22: AMS Relax Times = Integer 1
@@ -114,8 +131,7 @@ Solver 1
   Block 22: AMS Alpha Threshold = Real 0.30
   Block 22: AMS Beta Threshold = Real 0.25
   Block 22: AMS Singular Matrix = Logical True
-  Steady State Convergence Tolerance = 1e-6
-
+  
 End
 
 Solver 2
