@@ -20,12 +20,12 @@ def extract_nrm_values(file_path):
 
 # Extract NRM values from both files
 nrm_serial = extract_nrm_values(file_serial)
-nrm_parallel = extract_nrm_values(file_parallel)
+# nrm_parallel = extract_nrm_values(file_parallel)
 
 # Plot the NRM values
 plt.figure(figsize=(10, 6))
 plt.plot(range(1, len(nrm_serial) + 1), nrm_serial, marker="o", linestyle="-", label="Parallel")
-plt.plot(range(1, len(nrm_parallel) + 1), nrm_parallel, marker="x", linestyle="--", label="Serial")
+# plt.plot(range(1, len(nrm_parallel) + 1), nrm_parallel, marker="x", linestyle="--", label="Serial")
 
 # Customize the plot
 plt.xlabel("Line Index")
