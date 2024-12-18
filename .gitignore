@@ -5,3 +5,5 @@ results/
 .vscode/
 *results*
 case/
+run_elmer.sh
+convert_mesh.sh
